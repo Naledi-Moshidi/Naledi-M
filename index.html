@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark mode</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Bootstrap Link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Courier prime font Link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: white; /* Dark background */
+            color: #ffffff; /* Light text */
+            overflow-x: hidden;
+        }
+        html {
+          scroll-behavior: smooth;
+        }
+
+        .bg{
+          background-color: #89f336;
+        }
+
+        a, a:hover {
+            color: #ffffff; /* Ensure links are visible in dark mode */
+            text-decoration: none;
+        }
+
+        .courier-prime-regular{
+        font-family: "Courier Prime", serif;
+        font-weight: 400;
+        font-style: normal;
+        }
+
+
+        .mt {
+          margin-top: -40px;
+          
+        }
+
+        .mt-border {
+          margin-top: -60px;
+          font-size: 80px;
+          font-family: "Stereo Gothic W01 850";
+          
+        }
+        .Responsive-image2 {
+          margin-top: 90px;
+          padding-left: 4px;
+        }
+
+        .Stereo-gothic h1 {
+        font-family: "Stereo Gothic W01 850";
+        font-size: 150px;
+        margin-top: 70px;
+        letter-spacing: 12px;
+        
+      }
+
+      .text-success {
+      color: black !important; /* Use !important to ensure it overrides Bootstrap's default */
+      }
+
+      .btn-outline-success {
+        color: #89f336 !important; /* Use !important to ensure it overrides Bootstrap's default */
+        border-color: #89f336 !important; /* Lime border */
+      }
+     
+
+      .btn-outline-success:hover {
+      background-color: #89f336 !important; /* Lime background on hover */
+      color: #ffffff !important; /* White text on hover */
+      }
+
+     
+
+      /* Hamburger menu color */
+      .form-control {
+      border: 1px solid #89f336; /* Lime border */
+      color: #89f336; /* Lime text color */
+      }
+
+      .form-control::placeholder {
+        color: rgba(137, 243, 54, 0.7); /* Lighter lime for placeholder */
+      }
+
+      .form-control:focus {
+      border-color: #89f336; /* Lime border on focus */
+      box-shadow: 0 0 5px 2px rgba(137, 243, 54, 0.5); /* Lime glow on focus */
+      color: #89f336; /* Maintain lime text */
+      }
+
+      .custom-radius {
+      border-radius: 5px; /* Adjust the radius as needed */
+      }
+
+      @media (max-width: 768px) {
+      .Stereo-gothic h1 {
+      font-size: 60px; /* Smaller font size for mobile */
+      margin-top: 0; /* Remove or reduce negative margins */
+      letter-spacing: 5px;
+        }
+      }
+
+
+
+      /* View more*/
+      .view-more-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.view-more-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight:lighter;
+  color: #89f336;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  outline: none;
+}
+
+.view-more-btn::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #89f336;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+}
+
+.view-more-btn:hover::after {
+  width: 100%;
+}
+
+
+      /* */
+.text-bg-dark{
+  background-color: #89f336 !important;
+  color: #000; /* Set a contrasting text color for readability */
+}
+
+
+/**/
+.view-more-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #89f336; /* Replace with your preferred color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-more-btn:hover {
+    background-color: #89f336; /* Replace with your preferred hover color */
+}
+
+
+      
+    </style>
+
+</head>
+<body>
+    
+    <section>
+    <nav class="navbar navbar-dark bg fixed-top courier-prime-regular">
+        <div class="container-fluid">
+          <a class="navbar-brand text-success" href="home.html">NM</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title text-success" id="offcanvasDarkNavbarLabel">NM</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active text-success" aria-current="page" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-success" href="#skills-section">Skills</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-success" href="#projects-section">Projects</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </section>
+
+    <section>
+        <div class=" px-4 py-5 text-center courier-prime-regular text-success bg">
+            <div class="py-5">
+              <h1 class="display-5 fw-bold text-success">Front-end developer &<br>
+                Graphic designer</h1>
+              <div class="col-lg-6 mx-auto">
+                <p class="fs-5 mb-4 text-body-secondary">Passionate and resilient Web Developer with hands-on experience in Website Design & Development, IT, and Graphic Design. 
+                  Skilled in writing and reviewing code using HTML, CSS, Microsoft SQL, Python, and front-end libraries such as Bootstrap and jQuery. Proficient in designing intuitive user interfaces and navigation menus, with a strong focus on performance optimization and user experience. 
+                  Skilled at testing and troubleshooting to ensure seamless functionality. 
+                  Committed to achieving goals and fostering long-term growth through innovative solutions.</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <section>
+      <div class="container mt">
+        <img src="images/Untitled design 19.png" class="custom-radius rounded mx-auto d-block" width="150" height="170" alt="Responsive image">
+        <br>
+        <br>
+        <br>
+        <hr>
+      </div>
+    </section>
+
+
+  <section>
+    <div class="container Responsive-image2">
+      <div class="col-12 text-end">
+        <p id="skills-section" class="mb-0 mt-border text-warning">01</p>
+      </div>
+      <img src="images/Untitled design (5).png" class=" img-fluid rounded mx-auto d-block" width="1080" height="1080" alt="Responsive image2">
+    </div>
+  </section>
+
+
+<section>
+  <div class="container px-4 py-5">
+    <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5 pb-2 border-bottom">
+      <div class="col d-flex flex-column align-items-start gap-2">
+        <img src="images/Screenshot (22222).png" class="custom-radius" alt="Bullet point">
+        
+            <p class="text-body-secondary courier-prime-regular">
+            function Core_Competencies() { <br>
+            return [ <br>
+              "HTML5",<br>
+              "CSS3",<br>
+              "JavaScript",<br>
+              "Bootstrap",<br>
+              "Wordpress",<br>
+              "Woocommerce",<br>
+              "jQuery",<br>
+              "Angular",<br>
+              "PHP",<br>
+              "Python",<br>
+              "Microsoft SQL",<br>
+              "VS Code",<br>
+              "Front-end development",<br>
+              "Back-end Development",<br>
+              "UI/UX Design",<br>
+              "Wireframing",<br>
+              "Graphic Design" <br>
+              "Photoshop",<br>
+              "Illustrator",<br>
+              "Premier Pro",<br>
+              "Canva",<br>
+              "GitHub",<br>
+              "Code Pen",<br>
+              "Web Programming",<br>
+              "Information Systems",<br>
+              "Systems Development",<br>
+              "Digital Marketing",<br>
+              "Online Networking",<br>
+              "CIW Site Development",<br>
+              "Google Fonts",<br>
+
+            ]; <br>
+          }
+        </p>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section>
+  <div class="container px-4 py-5">
+     <!-- Move H1 to Far End -->
+     <div class="col-12 text-end">
+      <p id="projects-section" class="mb-0 mt-border text-warning">02</p>
+    </div>
+    <div class="row g-5 align-items-md-center border-bottom">
+      <!-- First Column -->
+      <div class="col-md-6 d-flex flex-column align-items-start gap-2">
+        <img src="images/Screenshot (22222).png" alt="Bullet point" class="img-fluid custom-radius">
+        <p class="text-body-secondary courier-prime-regular">
+          - System Development: GitHub, Visual Studio Code, front-end development, Back-end development, Web Programming, Information Systems, and IT Systems Development.
+          
+        </p>
+        <br>
+        <img src="images/Screenshot (22222).png" alt="Bullet point" class="img-fluid custom-radius">
+        <p class="text-body-secondary courier-prime-regular">
+          - Web Development & Design: HTML5, CSS3, JavaScript, jQuery, Bootstrap, Wordpress,
+          Woocommerce, jQuery, Angular, and PHP.
+        </p>
+        <img src="images/11.png" alt="Bullet point" class="img-fluid custom-radius">
+        <br>
+        <div class="view-more-container">
+          <a href="https://naledi-moshidi.github.io/Online-Rave/" class="view-more-btn courier-prime-regular">View More</a>
+
+        </div> 
+      </div>
+  
+      <!-- Second Column -->
+      <div class="col-md-6 d-flex flex-column align-items-start gap-2">
+        <img src="images/Screenshot (22222).png" alt="Bullet point" class="img-fluid custom-radius">
+        <p class="text-body-secondary courier-prime-regular">
+          - UI/UX Design: User Interface Design, User Experience Optimization, Responsive Web Design, and Wireframing.
+        </p>
+        <br>
+        <img src="images/12.png" alt="Bullet point" class="img-fluid custom-radius">
+        <br>
+        <div class="view-more-container">
+          <a href="https://naledi-moshidi.github.io/Naledi-Ntshirogeng/" class="view-more-btn courier-prime-regular">View More</a>
+        </div> 
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--------------------------------->
+
+
+<!-- Three Blocks duplicated-->
+<section>
+  <div class="container px-4 py-5">
+     <!-- Move H1 to Far End -->
+     <div class="col-12 text-end">
+      <p class="mb-0 mt-border text-warning">03</p>
+    </div>
+    <div class="row g-5 align-items-md-center">
+      <!-- First Column -->
+      <div class="col-md-6 d-flex flex-column align-items-start gap-2">
+        <img src="images/Screenshot (22222).png" alt="Bullet point" class="img-fluid custom-radius">
+        <p class="text-body-secondary courier-prime-regular">
+          - Graphic Design & Videography: Adobe Creative Suite, Premiere Pro, Canva, and videography.
+        </p>
+      </div>
+  
+      <!-- Second Column -->
+      <div class="col-md-6 d-flex flex-column align-items-start gap-2">
+        <img src="images/Screenshot (22222).png" alt="Bullet point" class="img-fluid custom-radius">
+        <p class="text-body-secondary courier-prime-regular">
+          - Marketing & Networking: Digital Marketing, Online Networking, and business development as an Associate.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--------------------------------->
+<section>
+  <div class="container px-4 py-5">
+    <div class="row g-5 align-items-md-center border-bottom">
+      <!-- First Column -->
+      <div class="col-md-12 d-flex flex-column align-items-start gap-2">
+        <img src="images/Screenshot (22222).png" alt="Bullet point" class="img-fluid custom-radius">
+        <p class="text-body-secondary courier-prime-regular">
+          - Tools & Technologies: Adobe Photoshop, Illustrator, Figma, Git, GitHub, Microsoft SQL, CIW Site Development, 
+          Python, Google Fonts, VS Code, and Codepen.
+        </p>
+      </div>
+  
+      <!-- Second Column -->
+      <div class="col-md-12 d-flex flex-column align-items-start gap-2">
+        <img src="images/50% OFF (1).png" alt="Bullet point" class="img-fluid custom-radius">
+        <br>
+        <div class="view-more-container">
+          <a href="https://naledi-moshidi.github.io/Naledi-Graphics/" class="view-more-btn courier-prime-regular">View More</a>
+        </div>        
+      </div>
+    </div>
+  </div>
+  <hr>
+</section>
+ <!---->
+
+
+
+<!-- lets chat duplicated from above -->
+<section>
+  <div class="container px-4 py-5">
+     <!-- Move H1 to Far End -->
+     <div class="col-12 text-end">
+      <p class="mb-0 mt-border text-warning">04</p>
+    </div>
+    <br>
+    <div class="row g-5 align-items-md-center ">  <!-- //border-bottom -->
+      <!-- First Column -->
+      <div class="col-md-6 d-flex flex-column align-items-start gap-2">
+        <img src="images/Screenshot (22222).png" alt="Bullet point" class="img-fluid custom-radius">
+        <h1 class="text-success courier-prime-regular">Lets chat!</h1>
+        <p class="text-body-secondary courier-prime-regular">
+          Feel free to contact us via Email or fill out our contact form to discuss your service needs.
+          I'm excited to collaborate with you and turn your ideas into an exceptional experience. <br>
+          <br>
+          <br>
+          491 Krugersdorp, <br>
+          Johannesburg <br>
+          2000
+          <br>
+          <br>
+          0676148492 <br>
+          moshidi1019@gmail.com
+        </p>
+      </div>
+  
+      <!-- Second Column form-->
+      <div class="col-md-6 d-flex flex-column align-items-start gap-2">
+        <div class="container my-5">
+          <h1 class="text-start mb-4 text-success courier-prime-regular"></h1>
+          <form id="contactForm" class="bg p-4 rounded shadow-sm courier-prime-regular">
+              <div class="row mb-3">
+                  <div class="col-md-6">
+                      <label for="firstName" class="form-label  text-body-secondary">First Name</label>
+                      <input type="text" id="firstName" name="firstName" class="form-control text-success" placeholder="First Name" required>
+                  </div>
+                  <div class="col-md-6">
+                      <label for="lastName" class="form-label text-body-secondary ">Last Name</label>
+                      <input type="text" id="lastName" name="lastName" class="form-control text-success" placeholder="Last Name" required>
+                  </div>
+              </div>
+              <div class="mb-3">
+                  <label for="email" class="form-label text-body-secondary">Email</label>
+                  <input type="email" id="email" name="email" class="form-control text-success" placeholder="Email" required>
+              </div>
+              <div class="mb-3">
+                  <label for="message" class="form-label text-body-secondary">Message</label>
+                  <textarea id="message" name="message" class="form-control text-success" rows="5" placeholder="Your message here..." required></textarea>
+              </div>
+              <button type="button" class="btn btn-light w-100 text-success btn-outline-success" onclick="submitForm()">Submit</button>
+          </form>
+          <div id="responseMessage" class="mt-3"></div>
+      </div>
+      </div>
+      <!---->
+      
+    
+      <!-- Load EmailJS library -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+  (function() {
+    emailjs.init("Zh3GtjT9xPlN_BC9t"); // Replace with your EmailJS User ID
+  })();
+
+  function submitForm() {
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    const templateParams = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      message: message,
+    };
+
+    emailjs.send("service_lcqd6g9", "template_7km1g3n", templateParams)
+      .then((response) => {
+        document.getElementById("responseMessage").innerHTML = 
+          "<div class='alert alert-success'>Message sent successfully!</div>";
+      }, (error) => {
+        document.getElementById("responseMessage").innerHTML = 
+          `<div class='alert alert-danger'>Failed to send the message: ${error.text || 'Unknown error.'}</div>`;
+        console.error("FAILED...", error);
+      });
+  }
+</script>
+
+      
+
+      <!---->
+
+    </div>
+  </div>
+</section>
+
+
+<!-- footer -->
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+  <div class="col-md-4 d-flex align-items-center">
+    <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+      <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+    </a>
+    <span class="mb-3 mb-md-0 text-body-secondary">©2024 Naledi Moshidi</span>
+  </div>
+
+  <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+    <li class="ms-3"><a class="text-body-secondary" href="https://github.com/Naledi-Moshidi"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+    </svg></a></li>
+    <li class="ms-3"><a class="text-body-secondary" href="https://www.linkedin.com/in/naledi-moshidi-754358120?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+      <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+    </svg></a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
